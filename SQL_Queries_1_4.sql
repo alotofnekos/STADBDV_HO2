@@ -52,7 +52,7 @@ FROM
 JOIN
     godailysales s ON p.ProductNumber = s.ProductNumber
 WHERE
-    s.ProductNumber NOT IN (
+    p.ProductNumber NOT IN (
         SELECT distinct ProductNumber
         FROM godailysales
         WHERE Date BETWEEN '2015-01-01' AND '2015-12-31'
@@ -68,17 +68,5 @@ WHERE p.ProductBrand NOT IN (
     JOIN godailysales s ON p.ProductNumber = s.ProductNumber
     WHERE s.Date BETWEEN '2015-01-01' AND '2015-12-31'
 );
-#
-#WRONG IMPLEMENTATION OF Q4A
-SELECT
-    distinct p.ProductNumber,
-    p.ProductBrand,
-    p.Product
-FROM
-    goproducts p
-JOIN
-    godailysales s ON p.ProductNumber = s.ProductNumber
-WHERE
-	s.Date not between '2015-01-01' AND '2017-12-31';
 
     
